@@ -1,0 +1,120 @@
+alex1:
+  env_id: FlappyBird-v0
+  device: cpu
+  replay_memory_size: 10000
+  mini_batch_size: 32
+  epsilon_init: 0.3
+  epsilon_decay: 0.9995
+  epsilon_min: 0.05
+  network_sync_rate: 10
+  learning_rate_a: 0.001
+  discount_factor_g: 0.99
+  stop_on_reward: 100000
+  fc1_nodes: 512
+  env_make_params:
+    use_lidar: False
+    pipe_gap: 150
+    use_pixels: True
+  enable_double_dqn: True
+  enable_dueling_dqn: True
+
+alex2:
+  env_id: FlappyBird-v0
+  device: cpu
+  replay_memory_size: 10000
+  mini_batch_size: 32
+  epsilon_init: 0.25
+  epsilon_decay: 0.99_99_95
+  epsilon_min: 0.05
+  network_sync_rate: 7
+  learning_rate_a: 0.0001
+  discount_factor_g: 0.99
+  stop_on_reward: 100000
+  fc1_nodes: 512
+  env_make_params:
+    use_lidar: False
+    pipe_gap: 150
+    use_pixels: True
+  enable_double_dqn: True
+  enable_dueling_dqn: True
+
+alex3:
+  env_id: FlappyBird-v0
+  device: cpu
+  replay_memory_size: 100000
+  mini_batch_size: 32
+  epsilon_init: 0.7
+  epsilon_decay: 0.99_99_5
+  epsilon_min: 0.05
+  network_sync_rate: 7
+  learning_rate_a: 0.0001
+  discount_factor_g: 0.9995
+  stop_on_reward: 100000
+  fc1_nodes: 512
+  env_make_params:
+    use_lidar: False
+    pipe_gap: 125
+    use_pixels: True
+  enable_double_dqn: True
+  enable_dueling_dqn: True
+
+alex4:
+  env_id: FlappyBird-v0
+  device: cpu
+  replay_memory_size: 100000
+  mini_batch_size: 32
+  epsilon_init: 0.7
+  epsilon_decay: 0.99_99_5
+  epsilon_min: 0.0001
+  network_sync_rate: 10
+  learning_rate_a: 0.0001
+  discount_factor_g: 0.99
+  stop_on_reward: 100000
+  fc1_nodes: 512
+  env_make_params:
+    use_lidar: False
+    pipe_gap: 100
+    uncap_fps: False
+    use_pixels: True
+  enable_double_dqn: True
+  enable_dueling_dqn: True
+
+alex5:
+  env_id: FlappyBird-v0
+  device: cpu
+  replay_memory_size: 10000
+  mini_batch_size: 32
+  epsilon_init: 1
+  epsilon_decay: 0.995
+  epsilon_min: 0.05
+  network_sync_rate: 10
+  learning_rate_a: 0.01
+  discount_factor_g: 0.99
+  stop_on_reward: 100000
+  fc1_nodes: 512
+  env_make_params:
+    use_lidar: False
+    pipe_gap: 150
+    use_pixels: True
+  enable_double_dqn: True
+  enable_dueling_dqn: True
+
+alex6:
+  env_id: FlappyBird-v0
+  device: cpu
+  replay_memory_size: 10000
+  mini_batch_size: 32
+  epsilon_init: 1
+  epsilon_decay: 0.9995
+  epsilon_min: 0.17
+  network_sync_rate: 10
+  learning_rate_a: 0.001
+  discount_factor_g: 0.99
+  stop_on_reward: 100000
+  fc1_nodes: 512
+  env_make_params:
+    use_lidar: False
+    pipe_gap: 150
+    use_pixels: True
+  enable_double_dqn: True
+  enable_dueling_dqn: True
