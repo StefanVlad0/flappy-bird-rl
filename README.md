@@ -2,6 +2,7 @@
 
 This project was created by [Alexandru Frunză](https://github.com/alexfrunza) and [Vlad Ștefan](https://github.com/StefanVlad0).
 
+![Flappy Bird Agent in Action](imgs/playing.gif)
 
 <br>
 
