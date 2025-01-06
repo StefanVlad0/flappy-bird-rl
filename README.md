@@ -76,6 +76,7 @@ Then, the frame is converted to **grayscale** to simplify the representation and
 <img src="imgs/frame_grayscaled_without_bg.png" width="270" height="480">
 
 Additionally, a crop is applied to **remove the ground area**, as it contains redundant information.
+
 Lastly, the processed frame is resized to **64x64 pixels** and normalized to values between 0 and 1.
    
 <img src="imgs/scaled_frame.png" width="256" height="256">
