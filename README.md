@@ -81,6 +81,48 @@ Lastly, the processed frame is resized to **64x64 pixels** and normalized to val
    
 <img src="imgs/scaled_frame.png" width="256" height="256">
 
+## Neural Network Architecture
+
+The network consists of:
+### Convolutional Layers
+- **Conv Layer 1**: 32 filters, kernel size 8x8, stride 4 — extracts basic spatial features.
+- **Conv Layer 2**: 64 filters, kernel size 4x4, stride 2 — extracts more complex spatial patterns.
+
+### Fully Connected Layers
+- **Fully Connected Layer 1**: 512 neurons — processes features from the convolutional layers.
+- **Fully Connected Layer 2**: 512 neurons — further processes features for Q-value predictions.
+
+### Dueling DQN Architecture (Optional)
+- **Value Stream**: Predicts the overall value of the state.
+- **Advantage Stream**: Predicts the advantages of taking each action relative to the average action.
+- **Q-Value Calculation**: Combines the value and advantage streams to output the final Q-values.
+
+### Action Space
+The agent can take the following actions:
+- **0**: Do nothing (the bird falls).
+- **1**: Flap (the bird jumps up).
+
+### Rewards System
+The agent receives rewards based on the following criteria:
+- **+0.1** for every frame it stays alive.
+- **+1.0** for successfully passing through a pipe.
+- **-1.0** for dying.
+- **-0.5** for touching the top of the screen.
+
+### Replay Buffer
+The **Replay Buffer** stores the agent's experiences (state, action, reward, next state, done) and samples random mini-batches to update the neural network. This helps to break the correlation between consecutive experiences, improving the training stability.
+
+
+
+### Training Progress
+The training progress is visualized through saved plots that show:
+- **Mean Rewards over Episodes**.
+- **Epsilon Decay over Time**.
+
+These plots are saved in the `training_results` folder during training.
+
+Additionally, during training, logs are generated whenever a new best reward is achieved. When this happens, the model is saved to a file in the `training_results` folder.
+
 ## Results
 
 The results of the training sessions can be found in the [`training_results`](training_results) folder.
@@ -112,6 +154,9 @@ vlad-big-replay4:
 
 The model was trained on **GPU** for efficiency, and the **`special_action`** parameter enabled an exploration strategy, where the agent flapped with a 1/4 probability and did nothing with a 3/4 probability when selecting a random action.
 
+The training session achieved a **best reward of 3579.0**, with an average reward of approximately **350**.
+
 <img src="training_results/vlad-big-replay4.png" width="640" height="480">
 
-The training session achieved a **best reward of 3579.0**, with an average reward of approximately **350**.
+We also experimented with **frame skipping** after jumping (e.g., configurations `vlad-big-replay3` and `vlad-eps-min`). These configurations showed rapid initial improvements in performance but eventually became unstable.
+
