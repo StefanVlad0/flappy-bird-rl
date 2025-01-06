@@ -80,3 +80,38 @@ Additionally, a crop is applied to **remove the ground area**, as it contains re
 Lastly, the processed frame is resized to **64x64 pixels** and normalized to values between 0 and 1.
    
 <img src="imgs/scaled_frame.png" width="256" height="256">
+
+## Results
+
+The results of the training sessions can be found in the [`training_results`](training_results) folder.
+
+A notable result was achieved using the following configuration:
+
+```yaml
+vlad-big-replay4:
+  env_id: FlappyBird-v0
+  device: gpu
+  replay_memory_size: 1_000_000
+  special_action: True
+  mini_batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9997
+  epsilon_min: 0.0001
+  network_sync_rate: 1000
+  learning_rate_a: 0.00025
+  discount_factor_g: 0.99
+  stop_on_reward: 50000
+  fc1_nodes: 512
+  env_make_params:
+    use_lidar: False
+    pipe_gap: 100
+    use_pixels: True
+  enable_double_dqn: True
+  enable_dueling_dqn: True
+```
+
+The model was trained on **GPU** for efficiency, and the **`special_action`** parameter enabled an exploration strategy, where the agent flapped with a 1/4 probability and did nothing with a 3/4 probability when selecting a random action.
+
+<img src="training_results/vlad-big-replay4.png" width="640" height="480">
+
+The training session achieved a **best reward of 3579.0**, with an average reward of approximately **350**.
