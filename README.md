@@ -64,3 +64,17 @@ Or test the agent:
 ```bash
 python main.py alex6
 ```
+
+## Input Preprocessing
+
+The **screenshots of the game** are preprocessed before being fed into the neural network.
+
+First, masks are applied to **remove irrelevant background elements** (like sky, grass, and clouds), leaving only key objects such as the bird and pipes.
+
+Then, the frame is converted to **grayscale** to simplify the representation and reduce unnecessary information. Additionally, a crop is applied to **remove the ground area**, as it contains redundant information.
+
+<img src="imgs/frame_grayscaled_without_bg.png" width="270" height="480">
+
+Lastly, the processed frame is resized to **64x64 pixels** and normalized to values between 0 and 1.
+   
+<img src="imgs/scaled_frame.png" width="256" height="256">
