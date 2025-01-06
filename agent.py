@@ -47,6 +47,7 @@ class DeepQLearningAgent:
         self.fc1_nodes = self.config.get("fc1_nodes", 512)
         self.env_make_params = self.config.get("env_make_params", {})
         self.enable_double_dqn = self.config.get("enable_double_dqn", True)
+        self.enable_dueling_dqn = self.config.get("enable_dueling_dqn", True)
         self.device = self.config.get(
             "device", "cuda" if torch.cuda.is_available() else "cpu"
         )
@@ -63,7 +64,7 @@ class DeepQLearningAgent:
     def play(self):
         env = gym.make(self.environment_id, render_mode="human", **self.env_make_params)
 
-        policy_dqn = DQN(self.fc1_nodes, self.enable_double_dqn).to(self.device)
+        policy_dqn = DQN(self.fc1_nodes, self.enable_dueling_dqn).to(self.device)
 
         if self.device == "cpu":
             policy_dqn.load_state_dict(
@@ -169,13 +170,13 @@ class DeepQLearningAgent:
         with open(self.LOG_FILE, "w") as file:
             file.write(log_message + "\n")
 
-        policy_dqn = DQN(self.fc1_nodes, self.enable_double_dqn).to(self.device)
+        policy_dqn = DQN(self.fc1_nodes, self.enable_dueling_dqn).to(self.device)
 
         epsilon = self.epsilon_start
 
         memory = ReplayMemory(self.replay_buffer_capacity)
 
-        target_dqn = DQN(self.fc1_nodes, self.enable_double_dqn).to(self.device)
+        target_dqn = DQN(self.fc1_nodes, self.enable_dueling_dqn).to(self.device)
         target_dqn.load_state_dict(policy_dqn.state_dict())
 
         self.optimizer = torch.optim.Adam(
