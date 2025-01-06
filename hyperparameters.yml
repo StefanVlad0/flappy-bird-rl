@@ -139,3 +139,66 @@ alex7:
   enable_double_dqn: True
   enable_dueling_dqn: True
 
+vlad-eps-min:
+  env_id: FlappyBird-v0
+  device: gpu
+  replay_memory_size: 100000
+  special_action: True
+  mini_batch_size: 32
+  epsilon_init: 1
+  epsilon_decay: 0.999
+  epsilon_min: 0.15
+  network_sync_rate: 1000
+  learning_rate_a: 0.0005
+  discount_factor_g: 0.99
+  stop_on_reward: 50000
+  fc1_nodes: 256
+  env_make_params:
+    use_lidar: False
+    pipe_gap: 150
+    use_pixels: True
+  enable_double_dqn: True
+  enable_dueling_dqn: True
+
+vlad-big-replay3:
+  env_id: FlappyBird-v0
+  device: gpu
+  replay_memory_size: 1_000_000
+  special_action: True
+  mini_batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9997
+  epsilon_min: 0.0001
+  network_sync_rate: 1000
+  learning_rate_a: 0.00025
+  discount_factor_g: 0.99
+  stop_on_reward: 50000
+  fc1_nodes: 512
+  env_make_params:
+    use_lidar: False
+    pipe_gap: 100
+    use_pixels: True
+  enable_double_dqn: True
+  enable_dueling_dqn: True
+
+
+vlad-big-replay4:
+  env_id: FlappyBird-v0
+  device: gpu
+  replay_memory_size: 1_000_000
+  special_action: True
+  mini_batch_size: 64
+  epsilon_init: 1
+  epsilon_decay: 0.9997
+  epsilon_min: 0.0001
+  network_sync_rate: 1000
+  learning_rate_a: 0.00025
+  discount_factor_g: 0.99
+  stop_on_reward: 50000
+  fc1_nodes: 512
+  env_make_params:
+    use_lidar: False
+    pipe_gap: 100
+    use_pixels: True
+  enable_double_dqn: True
+  enable_dueling_dqn: True
