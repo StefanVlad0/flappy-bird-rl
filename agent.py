@@ -84,12 +84,13 @@ class DeepQLearningAgent:
 
             terminated = False
             episode_reward = 0.0
+            score = 0
 
             while not terminated:
                 with torch.no_grad():
                     action = policy_dqn(state.unsqueeze(dim=0)).squeeze().argmax()
 
-                new_state, reward, terminated, _, _ = env.step(action.item())
+                new_state, reward, terminated, _, info = env.step(action.item())
 
                 new_state = preprocess_frame(new_state)
                 new_state = new_state.reshape(-1)
@@ -101,7 +102,11 @@ class DeepQLearningAgent:
                 reward = torch.tensor(reward, dtype=torch.float, device=self.device)
                 episode_reward += reward
 
-            print(f"The game finished with the score: {episode_reward}")
+                score = info.get("score", score)
+                print(f"Current Score: {score}", end="\r")
+
+            print(f"The game finished with the reward: {episode_reward}")
+            print(f"\nThe game finished with the score: {score}")
 
     def save_training_plot(self, rewards_per_episode, epsilon_history):
         fig = plt.figure(1)

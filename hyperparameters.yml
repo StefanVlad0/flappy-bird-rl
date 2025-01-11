@@ -141,7 +141,7 @@ alex7:
 
 vlad-eps-min:
   env_id: FlappyBird-v0
-  device: gpu
+  device: cuda
   replay_memory_size: 100000
   special_action: True
   mini_batch_size: 32
@@ -162,7 +162,7 @@ vlad-eps-min:
 
 vlad-big-replay3:
   env_id: FlappyBird-v0
-  device: gpu
+  device: cuda
   replay_memory_size: 1_000_000
   special_action: True
   mini_batch_size: 64
@@ -184,7 +184,7 @@ vlad-big-replay3:
 
 vlad-big-replay4:
   env_id: FlappyBird-v0
-  device: gpu
+  device: cuda
   replay_memory_size: 1_000_000
   special_action: True
   mini_batch_size: 64
