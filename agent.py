@@ -14,7 +14,7 @@ from torch import nn
 import flappy_bird_gymnasium
 from dqn import DQN
 from experience_replay import ReplayMemory
-from helpers import preprocess_frame
+from helpers import preprocess_frame, clear_terminal
 
 DATE_FORMAT = "%m-%d %H:%M:%S"
 RESULTS_DIR = "training_results"
@@ -103,7 +103,9 @@ class DeepQLearningAgent:
                 episode_reward += reward
 
                 score = info.get("score", score)
-                print(f"Current Score: {score}", end="\r")
+                # if score == 0:
+                #     clear_terminal()
+                print(f"Current Score: {score}")
 
             print(f"The game finished with the reward: {episode_reward}")
             print(f"\nThe game finished with the score: {score}")

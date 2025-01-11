@@ -199,6 +199,7 @@ vlad-big-replay4:
   env_make_params:
     use_lidar: False
     pipe_gap: 100
+    uncap_fps: True
     use_pixels: True
   enable_double_dqn: True
   enable_dueling_dqn: True

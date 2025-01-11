@@ -1,5 +1,7 @@
 import cv2
 import numpy as np
+import os
+import subprocess
 
 
 def preprocess_frame(frame):
@@ -37,3 +39,6 @@ def preprocess_frame(frame):
     )
 
     return scaled_image
+
+def clear_terminal():
+    subprocess.run('cls' if os.name == 'nt' else 'clear', shell=True)
