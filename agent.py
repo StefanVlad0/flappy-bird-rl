@@ -102,10 +102,13 @@ class DeepQLearningAgent:
                 reward = torch.tensor(reward, dtype=torch.float, device=self.device)
                 episode_reward += reward
 
+                last_score = score
+
                 score = info.get("score", score)
                 # if score == 0:
                 #     clear_terminal()
-                print(f"Current Score: {score}")
+                if score != last_score:
+                    print(f"Current score: {score}")
 
             print(f"The game finished with the reward: {episode_reward}")
             print(f"\nThe game finished with the score: {score}")
