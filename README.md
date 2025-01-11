@@ -171,3 +171,9 @@ In other instances (`alex1`, `alex5`, `vlad-eps-min`), we used lower values for 
 When we first created the CNN, we tried a layout with more convolutional layers. However, we encountered hardware issues because the networks were too large, consuming excessive GPU RAM during updates. Additionally, the trained model files were very large, approximately 1 GiB.
 
 A critical step in achieving good results was training the network for longer durations and at a faster pace. To accomplish this, we modified the number of frames the game rendered per second during training to take full advantage of our computers performance.
+
+## Video RL Agent playing Flappy Bird
+
+[![Watch the video](https://img.youtube.com/vi/RHMNmGWLHVg/maxresdefault.jpg)](https://youtu.be/RHMNmGWLHVg)
+
+### [RL Agent playing Flappy Bird - Watch on YouTube](https://youtu.be/RHMNmGWLHVg)
